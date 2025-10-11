@@ -1,48 +1,47 @@
-# Profanity 🧼
+# Less Strict Profanity 🧼
 
-![GitHub Release](https://img.shields.io/github/v/release/2Toad/Profanity)
-[![Downloads](https://img.shields.io/npm/dm/@2toad/profanity.svg)](https://www.npmjs.com/package/@2toad/profanity)
-[![Build status](https://github.com/2toad/profanity/actions/workflows/ci.yml/badge.svg)](https://github.com/2Toad/Profanity/actions/workflows/nodejs.yml)
+![GitHub Release](https://img.shields.io/github/v/release/cool-guy-awesome/less-strict-profanity)
+[![Downloads](https://img.shields.io/npm/dm/@hackertron/less-strict-profanity.svg)](https://www.npmjs.com/package/@hackertron/less-strict-profanity)
 
-A multi-language profanity filter with full TypeScript support
+A multi-language profanity filter with full TypeScript support. Less strict and has bypasses included
 
 ## Getting Started
 
 Install the package
 
 ```Shell
-npm i @2toad/profanity
+npm i @hackertron/less-strict-profanity
 ```
 
 >If you're using Node 11.x or older, you'll need to install [Profanity 1.x](https://github.com/2Toad/Profanity/releases)
-
+>Less Strict Profanity does not work on Node 11.x or older, you'll have to use normal Profanity
 ## Usage
 
 ```JavaScript
-import { profanity, CensorType } from '@2toad/profanity';
+import { profanity, CensorType } from '@hackertron/less-strict-profanity';
 // or
-const { profanity, CensorType } = require('@2toad/profanity');
+const { profanity, CensorType } = require('@hackertron/less-strict-profanity');
 ```
 
 ```JavaScript
-profanity.exists('I like big butts and I cannot lie');
+profanity.exists('I like big ass and I cannot lie');
 // true
 
 profanity.exists('I like big glutes and I cannot lie');
 // false
 
-profanity.censor('I like big butts (aka arses) and I cannot lie');
+profanity.censor('I like big ass (aka arses) and I cannot lie');
 // I like big @#$%&! (aka @#$%&!) and I cannot lie
 
-profanity.censor('I like big butts (aka arses) and I cannot lie', CensorType.FirstChar);
-// I like big *utts (aka *rses) and I cannot lie
+profanity.censor('I like big ass (aka arses) and I cannot lie', CensorType.FirstChar);
+// I like big *ss (aka *rses) and I cannot lie
 ```
 
 ## Options
 Create an instance of the Profanity class to change the default options:
 
 ```JavaScript
-import { Profanity } from '@2toad/profanity';
+import { Profanity } from '@hackertron/less-strict-profanity';
 
 const profanity = new Profanity({
     languages: ['de'],
@@ -68,7 +67,7 @@ You can override this option by specifying the languages in `exists` or `censor`
 profanity.exists('Je suis un connard', ['fr']);
 // true
 
-profanity.censor('I like big butts and je suis un connard', CensorType.Word, ['en', 'de', 'fr']);
+profanity.censor('I like big ass and je suis un connard', CensorType.Word, ['en', 'de', 'fr']);
 // I like big @#$%&! and je suis un @#$%&!
 ```
 
@@ -123,13 +122,13 @@ profanity.exists('vehículo horario');
 
 By default this is set to `@#$%&!`:
 ```JavaScript
-profanity.censor('I like big butts and I cannot lie');
+profanity.censor('I like big ass and I cannot lie');
 // I like big @#$%&! and I cannot lie
 ```
 
 Setting this to `****`, results in:
 ```JavaScript
-profanity.censor('I like big butts and I cannot lie');
+profanity.censor('I like big ass and I cannot lie');
 // I like big **** and I cannot lie
 ```
 
@@ -139,14 +138,14 @@ When specifying a `CensorType` other than `CensorType.Word`, this is the charact
 
 By default this is set to `*`:
 ```JavaScript
-profanity.censor('I like big butts and I cannot lie', CensorType.AllVowels);
-// I like big b*tts and I cannot lie
+profanity.censor('I like big ass and I cannot lie', CensorType.AllVowels);
+// I like big *ss and I cannot lie
 ```
 
 Setting this to `$`, results in:
 ```JavaScript
-profanity.censor('I like big butts and I cannot lie', CensorType.AllVowels);
-// I like big b$tts and I cannot lie
+profanity.censor('I like big ass and I cannot lie', CensorType.AllVowels);
+// I like big *ss and I cannot lie
 ```
 
 ## Customize the word list
