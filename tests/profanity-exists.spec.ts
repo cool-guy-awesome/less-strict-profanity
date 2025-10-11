@@ -5,7 +5,7 @@ import { profanity, Profanity } from "../src";
 describe("exists", () => {
   describe("wholeWord = true", () => {
     it("should return true when profanity exists in a sentence", () => {
-      expect(profanity.exists("I like big butts and I cannot lie")).to.be.true;
+      expect(profanity.exists("I like big ass and I cannot lie")).to.be.true;
     });
 
     it("should return false when profanity is not a whole word in a sentence", () => {
@@ -16,7 +16,7 @@ describe("exists", () => {
       expect(
         profanity.exists(`
           Nothing profane on line 1.
-          Censoring butt on line 2.
+          Censoring ass on line 2.
           Nothing profane on line 3.
         `),
       ).to.be.true;
@@ -27,7 +27,7 @@ describe("exists", () => {
     });
 
     it("should return true when profanity is surrounded by punctuation", () => {
-      expect(profanity.exists("What the (butt)!")).to.be.true;
+      expect(profanity.exists("What the (ass)!")).to.be.true;
     });
 
     it("should return false when profanity is part of a larger word", () => {
@@ -35,10 +35,10 @@ describe("exists", () => {
     });
 
     it("should return true when profanity is at the beginning of a sentence", () => {
-      expect(profanity.exists("Butt is a profane word")).to.be.true;
+      expect(profanity.exists("Ass is a profane word")).to.be.true;
     });
     it("should return true when profanity is at the end of a sentence", () => {
-      expect(profanity.exists("Don't be a butt.")).to.be.true;
+      expect(profanity.exists("Don't be an ass.")).to.be.true;
     });
 
     it("should return false for words that are substrings of profane words", () => {
@@ -46,13 +46,13 @@ describe("exists", () => {
     });
 
     it("should return true when profanity is separated by hyphens", () => {
-      expect(profanity.exists("Don't be a butt-head")).to.be.true;
-      expect(profanity.exists("Don't be a head-butt")).to.be.true;
+      expect(profanity.exists("Don't be a ass-head")).to.be.true;
+      expect(profanity.exists("Don't be a head-ass")).to.be.true;
     });
 
     it("should return true when profanity is separated by underscores", () => {
-      expect(profanity.exists("Don't be a butt_face")).to.be.true;
-      expect(profanity.exists("Don't be a face_butt")).to.be.true;
+      expect(profanity.exists("Don't be a ass_face")).to.be.true;
+      expect(profanity.exists("Don't be a face_ass")).to.be.true;
     });
 
     it("should return false when profanity is part of a word separated by a hyphen", () => {
@@ -69,7 +69,7 @@ describe("exists", () => {
     });
 
     it("should return true when profanity is surrounded by emoji", () => {
-      expect(profanity.exists("That's 💩butt💩")).to.be.true;
+      expect(profanity.exists("That's 💩ass💩")).to.be.true;
     });
   });
 
@@ -93,7 +93,7 @@ describe("exists", () => {
     });
 
     it("Should return true when the last character is an 'A' and there is profanity (A$$ edge case)", () => {
-      expect(customProfanity.exists("BUTTSA")).to.be.true;
+      expect(customProfanity.exists("ASSA")).to.be.true;
     });
 
     it("Should return true when some regex characters are present as profanity", () => {
@@ -101,11 +101,11 @@ describe("exists", () => {
     });
 
     it("should return true when profanity is at the beginning of a word", () => {
-      expect(customProfanity.exists("buttress the wall")).to.be.true;
+      expect(customProfanity.exists("assress the wall")).to.be.true;
     });
 
     it("should return true when profanity is at the end of a word", () => {
-      expect(customProfanity.exists("kickbutt performance")).to.be.true;
+      expect(customProfanity.exists("kickass performance")).to.be.true;
     });
     it("should return true when profanity is in the middle of a word", () => {
       expect(customProfanity.exists("Massachusetts")).to.be.true;
@@ -120,42 +120,42 @@ describe("exists", () => {
     });
 
     it("should return true when profanity is separated by hyphens", () => {
-      expect(customProfanity.exists("Don't be a butt-head")).to.be.true;
-      expect(customProfanity.exists("Don't be a head-butt")).to.be.true;
+      expect(customProfanity.exists("Don't be a ass-head")).to.be.true;
+      expect(customProfanity.exists("Don't be a head-ass")).to.be.true;
       expect(customProfanity.exists("Don't be an arsenic-head")).to.be.true;
       expect(customProfanity.exists("Don't be a head-arsenic")).to.be.true;
     });
 
     it("should return true when profanity is separated by underscores", () => {
-      expect(customProfanity.exists("Don't be a butt_head")).to.be.true;
-      expect(customProfanity.exists("Don't be a head_butt")).to.be.true;
+      expect(customProfanity.exists("Don't be a ass_head")).to.be.true;
+      expect(customProfanity.exists("Don't be a head_ass")).to.be.true;
       expect(customProfanity.exists("Don't be an arsenic_head")).to.be.true;
       expect(customProfanity.exists("Don't be a head_arsenic")).to.be.true;
     });
     it("should return true when profanity is surrounded by emoji", () => {
-      expect(customProfanity.exists("That's 💩butt💩")).to.be.true;
+      expect(customProfanity.exists("That's 💩ass💩")).to.be.true;
     });
   });
 
   describe("Case sensitivity", () => {
     it("should detect mixed case profanity", () => {
-      expect(profanity.exists("Don't be a BuTt")).to.be.true;
+      expect(profanity.exists("Don't be a AsS")).to.be.true;
     });
 
     it("should detect all uppercase profanity", () => {
-      expect(profanity.exists("DON'T BE A BUTT")).to.be.true;
+      expect(profanity.exists("DON'T BE A ASS")).to.be.true;
     });
 
     it("should detect all lowercase profanity", () => {
-      expect(profanity.exists("don't be a butt")).to.be.true;
+      expect(profanity.exists("don't be a ass")).to.be.true;
     });
 
     it("should detect profanity with alternating case", () => {
-      expect(profanity.exists("dOn'T bE a BuTt")).to.be.true;
+      expect(profanity.exists("dOn'T bE a AsS")).to.be.true;
     });
 
     it("should detect profanity with random casing", () => {
-      expect(profanity.exists("DoN't Be A bUtT")).to.be.true;
+      expect(profanity.exists("DoN't Be A aSS")).to.be.true;
     });
   });
 

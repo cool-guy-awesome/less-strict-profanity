@@ -26,15 +26,15 @@ describe("Unicode word boundaries (wholeWord=true)", () => {
 
   it("should treat curly quotes and NBSP as boundaries", () => {
     const profanity = new Profanity({ languages: ["en"], wholeWord: true, unicodeWordBoundaries: true });
-    expect(profanity.exists("\u201Cbutt\u201D")).to.be.true; // “butt”
-    expect(profanity.exists("\u00A0butt\u00A0")).to.be.true; // NBSP butt NBSP
+    expect(profanity.exists("\u201Cass\u201D")).to.be.true; // “ass”
+    expect(profanity.exists("\u00A0ass\u00A0")).to.be.true; // NBSP ass NBSP
   });
 
   it("should detect across Unicode hyphens/dashes", () => {
     const profanity = new Profanity({ languages: ["en"], wholeWord: true, unicodeWordBoundaries: true });
-    expect(profanity.exists("butt\u2010head")).to.be.true; // hyphen
-    expect(profanity.exists("butt\u2011head")).to.be.true; // non-breaking hyphen
-    expect(profanity.exists("butt\u2013head")).to.be.true; // en dash
+    expect(profanity.exists("ass\u2010head")).to.be.true; // hyphen
+    expect(profanity.exists("ass\u2011head")).to.be.true; // non-breaking hyphen
+    expect(profanity.exists("ass\u2013head")).to.be.true; // en dash
   });
 
   it("should not flag uppercase diacritics inside words", () => {

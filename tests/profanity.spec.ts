@@ -67,8 +67,8 @@ describe("Profanity", () => {
 
     describe("removeWords", () => {
       it("should remove multiple words from the list of profane words", () => {
-        customProfanity.removeWords(["butts", "arses"]);
-        expect(customProfanity.exists("I like big butts (aka arses) and I cannot lie")).to.be.false;
+        customProfanity.removeWords(["asss", "arses"]);
+        expect(customProfanity.exists("I like big asss (aka arses) and I cannot lie")).to.be.false;
       });
 
       it("should handle removing non-existent words", () => {
@@ -100,9 +100,9 @@ describe("Profanity", () => {
       });
 
       it("should not detect removed words", () => {
-        customProfanity.removeWords(["butt", "arse"]);
-        expect(customProfanity.exists("Don't be a butt")).to.be.false;
-        expect(customProfanity.censor("Don't be a butt")).to.equal("Don't be a butt");
+        customProfanity.removeWords(["ass", "arse"]);
+        expect(customProfanity.exists("Don't be a ass")).to.be.false;
+        expect(customProfanity.censor("Don't be a ass")).to.equal("Don't be a ass");
         expect(customProfanity.exists("You're an arse")).to.be.false;
         expect(customProfanity.censor("You're an arse")).to.equal("You're an arse");
       });
@@ -127,38 +127,38 @@ describe("Profanity", () => {
 
     describe("wholeWord = true", () => {
       it("should whitelist a word", () => {
-        customProfanity.whitelist.addWords(["butt"]);
-        expect(customProfanity.exists("Don't be a butt")).to.be.false;
-        expect(customProfanity.censor("Don't be a butt")).to.equal("Don't be a butt");
+        customProfanity.whitelist.addWords(["ass"]);
+        expect(customProfanity.exists("Don't be a ass")).to.be.false;
+        expect(customProfanity.censor("Don't be a ass")).to.equal("Don't be a ass");
       });
 
       it("should whitelist multiple words", () => {
-        customProfanity.whitelist.addWords(["butt", "arse"]);
-        expect(customProfanity.exists("Should we censor the word butt or arse?")).to.be.false;
-        expect(customProfanity.censor("Should we censor the word butt or arse?")).to.equal("Should we censor the word butt or arse?");
+        customProfanity.whitelist.addWords(["ass", "arse"]);
+        expect(customProfanity.exists("Should we censor the word ass or arse?")).to.be.false;
+        expect(customProfanity.censor("Should we censor the word ass or arse?")).to.equal("Should we censor the word ass or arse?");
       });
 
       it("should only whitelist exact whole words", () => {
         customProfanity.whitelist.addWords(["but"]);
         expect(customProfanity.exists("Don't be a but")).to.be.false;
         expect(customProfanity.censor("Don't be a but")).to.equal("Don't be a but");
-        expect(customProfanity.exists("Don't be a butt")).to.be.true;
-        expect(customProfanity.censor("Don't be a butt")).to.equal("Don't be a @#$%&!");
+        expect(customProfanity.exists("Don't be a ass")).to.be.true;
+        expect(customProfanity.censor("Don't be a ass")).to.equal("Don't be a @#$%&!");
       });
 
       describe("Hyphenated and underscore-separated words", () => {
         beforeEach(() => {
-          customProfanity.whitelist.addWords(["butt"]);
+          customProfanity.whitelist.addWords(["ass"]);
         });
 
         it("should detect profanity in hyphenated words when part is whitelisted", () => {
-          expect(customProfanity.exists("Don't be a butt-head")).to.be.true;
-          expect(customProfanity.censor("Don't be a butt-head")).to.equal(`Don't be a ${customProfanity.options.grawlix}-head`);
+          expect(customProfanity.exists("Don't be a ass-head")).to.be.true;
+          expect(customProfanity.censor("Don't be a ass-head")).to.equal(`Don't be a ${customProfanity.options.grawlix}-head`);
         });
 
         it("should detect profanity in underscore-separated words when part is whitelisted", () => {
-          expect(customProfanity.exists("Don't be a butt_head")).to.be.true;
-          expect(customProfanity.censor("Don't be a butt_head")).to.equal(`Don't be a ${customProfanity.options.grawlix}_head`);
+          expect(customProfanity.exists("Don't be a ass_head")).to.be.true;
+          expect(customProfanity.censor("Don't be a ass_head")).to.equal(`Don't be a ${customProfanity.options.grawlix}_head`);
         });
       });
     });
@@ -171,8 +171,8 @@ describe("Profanity", () => {
       });
 
       it("should whitelist multiple words", () => {
-        customProfanityPartial.whitelist.addWords(["buttocks", "arsenic"]);
-        expect(customProfanityPartial.exists("Should we censor the word buttocks or arsenic?")).to.be.false;
+        customProfanityPartial.whitelist.addWords(["assocks", "arsenic"]);
+        expect(customProfanityPartial.exists("Should we censor the word assocks or arsenic?")).to.be.false;
       });
 
       describe("Edge cases", () => {
@@ -209,11 +209,11 @@ describe("Profanity", () => {
 
     describe("removeWords", () => {
       it("should remove multiple words from the whitelist", () => {
-        customProfanity.whitelist.addWords(["butts", "arses"]);
-        expect(customProfanity.exists("I like big butts (aka arses) and I cannot lie")).to.be.false;
+        customProfanity.whitelist.addWords(["asss", "arses"]);
+        expect(customProfanity.exists("I like big asss (aka arses) and I cannot lie")).to.be.false;
 
-        customProfanity.whitelist.removeWords(["butts"]);
-        expect(customProfanity.exists("I like big butts (aka arses) and I cannot lie")).to.be.true;
+        customProfanity.whitelist.removeWords(["asss"]);
+        expect(customProfanity.exists("I like big asss (aka arses) and I cannot lie")).to.be.true;
       });
 
       it("should handle removing non-existent words from whitelist", () => {
@@ -233,8 +233,8 @@ describe("Profanity", () => {
     it("should detect profanity after removing from whitelist", () => {
       customProfanity.whitelist.addWords(["classic"]);
       customProfanity.whitelist.removeWords(["classic"]);
-      expect(customProfanity.exists("That's a classic butt movie")).to.be.true;
-      expect(customProfanity.censor("That's a classic butt movie")).to.equal(`That's a classic ${customProfanity.options.grawlix} movie`);
+      expect(customProfanity.exists("That's a classic ass movie")).to.be.true;
+      expect(customProfanity.censor("That's a classic ass movie")).to.equal(`That's a classic ${customProfanity.options.grawlix} movie`);
     });
 
     it("should handle adding and removing words from whitelist in sequence", () => {
@@ -249,12 +249,12 @@ describe("Profanity", () => {
     describe("Custom grawlix", () => {
       it("should use custom grawlix string", () => {
         const customProfanity = new Profanity({ grawlix: "!@#" });
-        expect(customProfanity.censor("Don't be a butt")).to.equal("Don't be a !@#");
+        expect(customProfanity.censor("Don't be a ass")).to.equal("Don't be a !@#");
       });
 
       it("should use custom grawlix character", () => {
         const customProfanity = new Profanity({ grawlixChar: "X" });
-        expect(customProfanity.censor("You're a butt", CensorType.FirstChar)).to.equal("You're a Xutt");
+        expect(customProfanity.censor("You're a ass", CensorType.FirstChar)).to.equal("You're a Xss");
       });
     });
   });
