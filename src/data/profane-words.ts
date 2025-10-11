@@ -16,6 +16,7 @@ export const profaneWords: Map<string, string[]> = new Map([
       "arse",
       "arses",
       "ass",
+      "asss",
       "ass-fucker",
       "asses",
       "assfucker",
